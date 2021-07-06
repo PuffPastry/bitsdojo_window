@@ -36,13 +36,13 @@ class MoveWindow extends StatelessWidget {
 
 class WindowTitleBarBox extends StatelessWidget {
   final Widget? child;
-  WindowTitleBarBox({Key? key, this.child}) : super(key: key);
+  int? height = appWindow.titleBarHeight;
+  WindowTitleBarBox({Key? key, required this.child, this.height}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     if (kIsWeb) {
       return Container();
     }
-    final titlebarHeight = appWindow.titleBarHeight;
-    return SizedBox(height: titlebarHeight, child: this.child ?? Container());
+    return SizedBox(height: this.height, child: this.child ?? Container());
   }
 }
